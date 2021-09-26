@@ -20,11 +20,11 @@ class HomeCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func configureCell(model : HomeModel){
-        self.image.image = UIImage(named: model.image)
-        self.titleLabel.text = model.title
-        self.descriptionLabel.text = model.description
-        self.priceLabel.text = "\(model.price)$"
+    func configureCell(model : Products){
+       // self.image.image = UIImage(named: model.image)
+        self.titleLabel.text = model.productTitle
+        self.descriptionLabel.text = model.productDescription
+        self.priceLabel.text = "\(model.productPrice)$"
         
     }
 

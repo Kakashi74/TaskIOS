@@ -19,7 +19,7 @@ class HomePresenter {
     func detachView() {
         view = nil
     }
-    var products : [HomeModel] = [
+    var products : [ProductModel] = [
       //  HomeModel(image: "image1", title: "Nike Air Force 1", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
       //  HomeModel(image: "image2", title: "Nike Air Max", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
       //  HomeModel(image: "image3", title: "Nike Sportswear", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
@@ -31,7 +31,7 @@ class HomePresenter {
         return products.count
     }
     
-    func getProductsAt(index: Int)-> HomeModel {
+    func getProductsAt(index: Int)-> ProductModel {
         return products[index]
     }
     

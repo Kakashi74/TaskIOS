@@ -16,11 +16,11 @@ class AddProductVC: UIViewController {
     
     @IBOutlet var allTextFields : [UITextField]!
     
-    var products : [HomeModel] = []
+    var presenter : AddProductPresenter = AddProductPresenter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.attachView(view: self)
         view.HideKeyboard()
-        print("new Products\(products)")
     }
     
     @IBAction func addProductBtnPressed(_ sender: Any){
@@ -31,8 +31,13 @@ class AddProductVC: UIViewController {
         let title = ProductName.text!
         let desc = ProductDescription.text!
         guard let price = Double(ProductPrice.text!) else { return }
-        let allProducts = HomeModel(image: "", title: title, description: desc, price: price)
-        products.append(allProducts)
+        let allProducts = ProductModel(image: "", title: title, description: desc, price: price)
+        presenter.saveToCoreData(model: allProducts)
+        
+        for emptyText in self.allTextFields {
+            emptyText.text = ""
+        }
+        poshWithoutData(identifire: "HomeVC")
     }
 
 }

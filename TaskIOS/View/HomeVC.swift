@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+    @IBOutlet weak var emptyView : UIView!
     @IBOutlet weak var HomeColView : UICollectionView!{
         didSet {
             HomeColView.register(UINib(nibName: "HomeCell", bundle: nil), forCellWithReuseIdentifier: "HomeCell")
@@ -17,9 +17,26 @@ class HomeVC: UIViewController {
     }
     
     var presenter: HomePresenter = HomePresenter()
+    var products = [Products](){
+        didSet{
+            HomeColView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        products =  DataBaseManegar.sharedDB.fetchFavRecipes()
+        if products.count == 0 {
+            HomeColView.isHidden = true
+            emptyView.isHidden = false
+        } else {
+            HomeColView.isHidden = false
+            emptyView.isHidden = true
+        }
     }
     
     @IBAction func addProductBtn(_ sender: UIButton){
@@ -31,16 +48,22 @@ class HomeVC: UIViewController {
 
 extension HomeVC : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter.getProductsCount()
+        return products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        let item = presenter.getProductsAt(index: indexPath.item)
-        
-        cell.configureCell(model: item)
+        // let item = presenter.getProductsAt(index: indexPath.item)
+        cell.configureCell(model: products[indexPath.item])
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsVC
+        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        vc.Details = products[indexPath.item]
+        self.present(vc,animated: true, completion: nil)
     }
     
     

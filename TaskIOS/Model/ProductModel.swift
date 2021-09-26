@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct HomeModel : Codable {
+struct ProductModel : Codable {
     var image : String
-    var title : String
+    var title : String?
     var description : String
     var price : Double
     
