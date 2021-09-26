@@ -61,6 +61,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2AD98C92700257800542319 /* DataBaseManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataBaseManager;
+			sourceTree = "<group>";
+		};
 		E2D4F76D26FCBC8C00A31C78 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +87,7 @@
 		E2D4F77826FCBC8C00A31C78 /* TaskIOS */ = {
 			isa = PBXGroup;
 			children = (
+				E2AD98C92700257800542319 /* DataBaseManager */,
 				E2DE253E26FCF98700CE09C0 /* Toaster */,
 				E2DE253526FCF97E00CE09C0 /* Utilities */,
 				E2D4F79526FCBD3F00A31C78 /* Presenter */,

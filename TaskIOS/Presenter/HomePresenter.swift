@@ -20,10 +20,11 @@ class HomePresenter {
         view = nil
     }
     var products : [HomeModel] = [
-        HomeModel(image: "image1", title: "Nike Air Force 1", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
-        HomeModel(image: "image2", title: "Nike Air Max", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
-        HomeModel(image: "image3", title: "Nike Sportswear", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
-        HomeModel(image: "image4", title: "Nike KD13", description: "Lorem ipsum dolor sit amet consectur", price: 30)]
+      //  HomeModel(image: "image1", title: "Nike Air Force 1", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
+      //  HomeModel(image: "image2", title: "Nike Air Max", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
+      //  HomeModel(image: "image3", title: "Nike Sportswear", description: "Lorem ipsum dolor sit amet consectur", price: 30) ,
+      //  HomeModel(image: "image4", title: "Nike KD13", description: "Lorem ipsum dolor sit amet consectur", price: 30)
+    ]
     
     
     func getProductsCount () -> Int {
